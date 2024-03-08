@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>APK在线分析</title>
+    <meta name="generator" content="GravCMS" />
+    <meta
+      name="description"
+      content="Android, embedded systems, graphics, and various information about mobile app development"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      href="/assets/0a9774fb143cccd60bd4c2c39285a150.css"
+      type="text/css"
+      rel="stylesheet"
+    />
+    <script src="/assets/40f7fbcafa66dcafa0a6dfe27250cd93.js"></script>
+    <!-- <script>
+      window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+          palette: {
+            popup: {
+              background: "#000000",
+              text: "#ffffff",
+            },
+            button: {
+              background: "#f1d600",
+              text: "#000000",
+              border: "#f1d600",
+            },
+          },
+          position: "bottom",
+          theme: "block",
+          content: {
+            message:
+              "该网页的数据为纯客户端使用。不涉及服务器",
+            dismiss: "好的",
+          },
+        });
+      });
+    </script> -->
+    <!-- <script>
+      hljs.initHighlightingOnLoad();
+    </script> -->
+  </head>
+  <body id="top" class="">
+    <div id="sb-site">
+      <header id="header">
+        <div id="logo">
+          <h3><a href="/">APK在线分析工具</a></h3>
+        </div>
+      </header>
+      <section id="body" class="">
+        <div class="blog-content-item grid pure-g-r">
+          <div id="item" class="block pure-u-2-3">
+            <div class="list-item">
+              <div class="list-blog-padding">
+                <p>
+                    此工具允许您分析有关AndroidAPK文件的各种详细信息。它可以反编译二进制xml文件和资源。
+                </p>
+                <div id="apk-tool-loader" style="display: none"></div>
+                <div id="select-files-section">
+                  <label for="file-input">
+                    拖拽APK到此处或者选择文件上传</label
+                  >
+                  <input
+                    id="file-input"
+                    type="file"
+                    name="file-name"
+                    accept=".apk, .APK"
+                    style="display: none"
+                  />
+                </div>
+                <blockquote>
+                    <p>
+                      Note: 所有APK处理均在客户端完成。 您的APK文件不会传输到服务器。
+                    </p>
+                  </blockquote>
+                  <blockquote>
+                    <p>
+                      Note: 工具源自<a href="https://sisik.eu/apk-tool" >sisik.eu</a>，并做了部分完善。
+                    </p>
+                  </blockquote>
+                <div id="file-name" style="display: none"></div>
+                <div id="apk-tool-error" style="display: none"></div>
+                <header id="label-icon-section">
+                  <img id="app-icon" style="display: none" />
+                  <h5 id="app-label" style="display: none"></h5>
+                </header>
+                <h6
+                  id="package-name-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Package name
+                </h6>
+                <div id="package-name" style="display: none"></div>
+                <h6
+                  id="version-code-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  versionCode
+                </h6>
+                <div
+                  id="version-code"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="version-name-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  versionName
+                </h6>
+                <div
+                  id="version-name"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="supported-abis-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Supported ABIs
+                </h6>
+                <div
+                  id="supported-abis"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="native-libs-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Native libraries
+                </h6>
+                <div
+                  id="native-libs"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="min-sdk-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Minimal supported Android version
+                </h6>
+                <div
+                  id="min-sdk"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="target-sdk-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Target SDK
+                </h6>
+                <div
+                  id="target-sdk"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h6
+                  id="used-tech-title"
+                  class="apk-header-item"
+                  style="display: none"
+                >
+                  Used Technologies & Frameworks
+                </h6>
+                <div
+                  id="used-tech"
+                  class="apk-header-item"
+                  style="display: none"
+                ></div>
+                <h4><a
+                    href="https://developer.android.com/reference/android/app/Activity"
+                    >Activities</a
+                  ></h4>
+                <div
+                  class="apk-item"
+                  id="activities-list"
+                  style="display: none"
+                ></div>
+                <h4><a
+                    href="https://developer.android.com/reference/android/app/Service"
+                    >Services</a
+                  ></h4>
+                <div
+                  class="apk-item"
+                  id="services-list"
+                  style="display: none"
+                ></div>
+                <h4><a
+                    href="https://developer.android.com/reference/android/content/BroadcastReceiver"
+                    >Broadcast receivers</a
+                  ></h4>
+                <div
+                  class="apk-item"
+                  id="receivers-list"
+                  style="display: none"
+                ></div>
+                <h4><a
+                    href="https://developer.android.com/reference/android/content/ContentProvider"
+                    >Content providers</a
+                  ></h4>
+                <div
+                  class="apk-item"
+                  id="providers-list"
+                  style="display: none"
+                ></div>
+                <h4><a
+                    href="https://developer.android.com/guide/topics/permissions/overview"
+                    >Requested Permissions</a
+                  ></h4>
+                <div
+                  class="apk-item"
+                  id="permissions-list"
+                  style="display: none"
+                ></div>
+                <h4>AndroidManifest.xml</h4>
+                <pre
+                  id="manifest-pre"
+                  style="display: none"
+                ><code style="display:none;" id="android-manifest" class="language-xml hljs"></code></pre>
+                <h4>APK 签名</h4>
+                
+                <!-- Emscripted progress and status handling -->
+                <progress
+                  value="0"
+                  max="100"
+                  id="progress"
+                  hidden="1"
+                ></progress>
+                <figure style="overflow: visible" id="spinner">
+                  <div class="spinner"></div>
+                  <center style="margin-top: 0.5em">
+                    <strong>APK Tool</strong>
+                  </center>
+                </figure>
+                <div class="emscripten" id="status" hidden="1">
+                  Downloading...
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="/assets/f85f88a5383bd8b387a784b416167c64.js"></script>
+    <script>
+      $(function () {
+        $(document).ready(function () {
+          $.slidebars({
+            hideControlClasses: true,
+            scrollLock: true,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
